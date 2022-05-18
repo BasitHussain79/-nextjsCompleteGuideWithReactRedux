@@ -12,8 +12,15 @@ function HomePage() {
 }
 
 export const getServerSideProps = 
-  wrapper.getServerSideProps(store => async ({req, res, ...etc}) => {
-    await store.dispatch(getRooms(req));
+  wrapper.getServerSideProps(store => 
+    async ({req, res, query, ...etc}) => {
+    await store.dispatch(getRooms(
+      req, 
+      query.page, 
+      query.location,
+      query.guests,
+      query.category
+      ));
   }
 );
 
