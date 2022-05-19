@@ -1,8 +1,10 @@
+import { } from "../constants/roomConstants";
 import {
     ALL_ROOMS_FAIL,
-    ALL_ROOMS_SUCCESS,
-    CLEAR_ERRORS
-} from "../constants/roomConstants";
+    CLEAR_ERRORS,
+    REGISTER_USER_REQUEST,
+    REGISTER_USER_SUCCESS
+} from "../constants/userConstants";
 
 const initialState = {
   rooms: [],
@@ -10,7 +12,12 @@ const initialState = {
 
 export const allRoomsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ALL_ROOMS_SUCCESS:
+    case REGISTER_USER_REQUEST:
+      return {
+        loading: true,
+      };
+
+    case REGISTER_USER_SUCCESS:
       return {
         roomsCount: action.payload.roomsCount,
         resPerPage: action.payload.resPerPage,
@@ -33,4 +40,3 @@ export const allRoomsReducer = (state = initialState, action) => {
       return state;
   }
 };
-

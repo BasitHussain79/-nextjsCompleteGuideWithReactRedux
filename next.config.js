@@ -8,7 +8,10 @@ const nextConfig = {
     styledComponents: true,
   },
   env: {
-    DB_LOCAL_URI: 'mongodb://localhost:27017/bookit'
+    DB_LOCAL_URI: 'mongodb://localhost:27017/bookit',
+    CLOUDINARY_CLOUD_NAME: 'booklit',
+    CLOUDINARY_API_KEY: '753565283234368',
+    CLOUDINARY_API_SECRET: '2ugKXwJqoA-rzBwA1qA7Hj94YR0',
   }
 }
 
