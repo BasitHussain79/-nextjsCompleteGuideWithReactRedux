@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { Nav } from "./styledComponent";
 
 const Header = () => {
+  const router = useRouter()
   return (
     <Nav>
       <div className='container flex-between'>
@@ -18,7 +20,7 @@ const Header = () => {
           </Link>
         </div>
         <div>
-          <button type='button'>Login</button>
+          <button type='button' onClick={() => router.push('/login')}>Login</button>
         </div>
       </div>
     </Nav>
