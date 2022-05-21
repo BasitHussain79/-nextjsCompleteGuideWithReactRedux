@@ -31,9 +31,7 @@ const allRooms = catchAsyncErrors(async (req, res) => {
 
 })
 
-
 // create new room => /api/rooms
-
 const newRoom = catchAsyncErrors(async (req, res) => {
   const room = await Rooms.create(req.body);
   res.status(200).json({

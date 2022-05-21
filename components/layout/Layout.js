@@ -17,7 +17,7 @@ const Layout = ({ children, title = "Book Best Hotels for your Holidays" }) => {
         <title>{title}</title>
       </Head>
       <Header />
-      <main className='main container'>{children}</main>
+      <main className='container'>{children}</main>
       <Footer />
 
       <ToastContainer

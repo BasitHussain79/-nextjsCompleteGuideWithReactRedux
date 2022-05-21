@@ -1,9 +1,9 @@
 import axios from "axios";
 import absoluteUrl from "next-absolute-url";
 import {
-    ALL_ROOMS_FAIL,
-    ALL_ROOMS_SUCCESS,
-    CLEAR_ERRORS
+  ALL_ROOMS_FAIL,
+  ALL_ROOMS_SUCCESS,
+  CLEAR_ERRORS
 } from "../constants/roomConstants";
 
 // get all rooms
@@ -11,7 +11,12 @@ export const getRooms =
   (req, currentPage = 1, location = "", guests, category) =>
   async (dispatch) => {
     try {
+      dispatch({
+        type: REGISTER_USER_REQUEST,
+      });
+      
       const { origin } = absoluteUrl(req);
+
       let link = `${origin}/api/rooms?page=${currentPage}&location=${location}`;
 
       if (guests) link = link.concat(`&guestCapacity=${guests}`);
@@ -26,7 +31,7 @@ export const getRooms =
     } catch (error) {
       dispatch({
         type: ALL_ROOMS_FAIL,
-        payload: error.response.data.message,
+        payload: error?.response?.data?.message,
       });
     }
   };

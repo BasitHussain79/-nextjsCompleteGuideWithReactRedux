@@ -27,6 +27,7 @@ const Home = () => {
   };
 
   let count = roomsCount;
+  
   if(location) {
     count = filteredRoomsCount
   }
