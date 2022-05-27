@@ -24,8 +24,10 @@ const reducer = (state, action) => {
    }
 }
 
-const initStore = () => {
-    return createStore(reducer, bindMiddleware([thunkMiddleware]))
-}
+// const initStore = () => {
+//     return createStore(reducer, bindMiddleware([thunkMiddleware]))
+// }
+// create a makeStore function
+const initStore = (context) => createStore(reducer, bindMiddleware([thunkMiddleware]));
 
-export const wrapper = createWrapper(initStore)
+export const wrapper = createWrapper(initStore, {debug: true})

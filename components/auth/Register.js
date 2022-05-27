@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { clearErrors, registerUser } from "../../controllers/authController";
 import { toastEmitterError } from "../../utils/helpers";
 import ButtonLoader from '../layout/ButtonLoader';
@@ -23,6 +23,8 @@ const Register = () => {
   );
 
   const { success, error, loading } = useSelector((state) => state.auth);
+ 
+  
 
   useEffect(() => {
     if (success) {

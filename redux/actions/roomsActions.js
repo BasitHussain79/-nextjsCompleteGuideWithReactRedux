@@ -11,14 +11,15 @@ export const getRooms =
   (req, currentPage = 1, location = "", guests, category) =>
   async (dispatch) => {
     try {
-      dispatch({
-        type: REGISTER_USER_REQUEST,
-      });
+      // dispatch({
+      //   type: REGISTER_USER_REQUEST,
+      // });
       
       const { origin } = absoluteUrl(req);
 
-      let link = `${origin}/api/rooms?page=${currentPage}&location=${location}`;
+      let link = `${origin}/api/rooms?page=${currentPage}`;
 
+      if(location) link = link.concat(`&location=${location}`);
       if (guests) link = link.concat(`&guestCapacity=${guests}`);
       if (category) link = link.concat(`&category=${category}`);
 

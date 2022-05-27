@@ -32,6 +32,10 @@ const Home = () => {
     count = filteredRoomsCount
   }
 
+  useEffect(() => {
+    console.log('testingssss*', rooms);
+  }, [rooms]);
+  
   return (
     <>
       <section id='rooms' className='container mt-5'>
