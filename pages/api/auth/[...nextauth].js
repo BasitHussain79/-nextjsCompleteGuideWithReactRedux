@@ -9,17 +9,17 @@ export default NextAuth({
   },
   providers: [
     CredentialsProvider({
-      name: 'credentials',
+      name: "credentials",
       credentials: {
         email: {
-          label: 'Email',
-          type: 'email',
-          placeholder: 'jhon@test.com'
+          label: "Email",
+          type: "email",
+          placeholder: "jhon@test.com",
         },
         password: {
           label: "Password",
-          type: "password"
-        }
+          type: "password",
+        },
       },
       async authorize(credentials) {
         dbConnect();
@@ -50,23 +50,40 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    jwt: ({token, user}) => {
-      if(user) {
-        token.id = user.user
+    // jwt: async (token, user) => {
+    //   user && (token.user = user);
+    //   return Promise.resolve(token);
+    // },
+    // session: async (session, user) => {
+    //   if (user) {
+    //     session.user = user.user
+    //     console.log('*******************************')
+    //     console.log('session****', session, user)
+    //     console.log('*******************************')
+    //   }
+    //   return Promise.resolve(session);
+    // },
+    jwt: ({ token, user }) => {
+      if (user) {
+        token.user = user.user;
+        console.log('testing***', user)
       }
+      console.log("*******************", user, token);
       return token;
     },
-    session: ({session, token}) => {
-      if(token) {
-        session.user = token.id;
+    session: ({ session, token }) => {
+      if (token) {
+        session.user = token;
       }
 
+      console.log('first', token)
+
       return session;
-    }
+    },
   },
-  secret: 'test',
+  secret: "test",
   jwt: {
-    secret: 'test123',
-    encryption: true
-  }
+    secret: "test123",
+    encryption: true,
+  },
 });

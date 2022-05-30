@@ -39,7 +39,10 @@ const registerUser = catchAsyncErrors(async (req, res) => {
 // current user profile => /api/me
 const currentUserProfile = catchAsyncErrors(async (req, res) => {
 
-  const user = await User.findById(req.user._id);
+  const user = await User.findById(req.user.id);
+  console.log('+++++++++++++++++++++++++++++++++++++++')
+  console.log('-----------------------', req.user)
+  console.log('+++++++++++++++++++++++++++++++++++++++')
   res.status(200).json({
       success: true,
       user
@@ -51,10 +54,6 @@ const currentUserProfile = catchAsyncErrors(async (req, res) => {
 const getUserDetails = catchAsyncErrors(async (req, res) => {
 
   const user = await User.find();
-
-  console.log('------------------------')
-  console.log('get all users', req.session);
-  console.log('------------------------')
 
   if (!user) {
       return next(new ErrorHandler('User not found with this ID.', 400))

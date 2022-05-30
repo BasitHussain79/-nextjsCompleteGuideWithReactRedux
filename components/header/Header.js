@@ -5,7 +5,16 @@ import React from "react";
 import { Nav } from "./styledComponent";
 
 const Header = () => {
-  const router = useRouter()
+  // const dispatch = useDispatch();
+  const router = useRouter();
+
+  // const { user, loading } = useSelector((state) => state.auth);
+
+  // console.log(user, loading)
+
+  // useEffect(() => {
+  //   dispatch(loaderUser());
+  // }, [dispatch]);
   return (
     <Nav>
       <div className='container flex-between'>
@@ -20,7 +29,9 @@ const Header = () => {
           </Link>
         </div>
         <div>
-          <button type='button' onClick={() => router.push('/login')}>Login</button>
+          <button type='button' onClick={() => router.push("/login")}>
+            Login
+          </button>
         </div>
       </div>
     </Nav>

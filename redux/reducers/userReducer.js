@@ -1,5 +1,5 @@
 import {
-  CLEAR_ERRORS, REGISTER_USER_FAIL, REGISTER_USER_REQUEST,
+  CLEAR_ERRORS, LOAD_USER_REQUEST, REGISTER_USER_FAIL, REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS
 } from "../constants/userConstants";
 
@@ -16,6 +16,11 @@ export const authReducer = (state = initialState, action) => {
       return {
           loading: true
       };
+
+      case LOAD_USER_REQUEST: 
+      return {
+        loading: true
+      }
 
     case REGISTER_USER_SUCCESS:
       return {
