@@ -40,9 +40,6 @@ const registerUser = catchAsyncErrors(async (req, res) => {
 const currentUserProfile = catchAsyncErrors(async (req, res) => {
 
   const user = await User.findById(req.user._id);
-  console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-  console.log('******************', req.user)
-  console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
   res.status(200).json({
       success: true,
       user

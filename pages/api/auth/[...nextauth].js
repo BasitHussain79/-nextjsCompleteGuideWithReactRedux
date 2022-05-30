@@ -50,19 +50,6 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    // jwt: async (token, user) => {
-    //   user && (token.user = user);
-    //   return Promise.resolve(token);
-    // },
-    // session: async (session, user) => {
-    //   if (user) {
-    //     session.user = user.user
-    //     console.log('*******************************')
-    //     console.log('session****', session, user)
-    //     console.log('*******************************')
-    //   }
-    //   return Promise.resolve(session);
-    // },
     jwt: ({token, user}) => {
       if(user) {
         token.id = user.user
