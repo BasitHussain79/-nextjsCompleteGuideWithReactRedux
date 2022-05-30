@@ -17,7 +17,7 @@ const Home = () => {
   useEffect(() => {
     toastEmitterError(error);
     dispatch(clearErrors());
-  }, []);
+  }, [error, dispatch]);
 
   let { location, page = 1 } = router.query;
   page = Number(page);

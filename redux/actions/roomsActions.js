@@ -11,9 +11,6 @@ export const getRooms =
   (req, currentPage = 1, location = "", guests, category) =>
   async (dispatch) => {
     try {
-      // dispatch({
-      //   type: REGISTER_USER_REQUEST,
-      // });
       
       const { origin } = absoluteUrl(req);
 

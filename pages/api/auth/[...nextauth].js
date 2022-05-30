@@ -9,6 +9,18 @@ export default NextAuth({
   },
   providers: [
     CredentialsProvider({
+      name: 'credentials',
+      credentials: {
+        email: {
+          label: 'Email',
+          type: 'email',
+          placeholder: 'jhon@test.com'
+        },
+        password: {
+          label: "Password",
+          type: "password"
+        }
+      },
       async authorize(credentials) {
         dbConnect();
 
@@ -38,13 +50,36 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    jwt: async (token, user) => {
-      user && (token.user = user);
-      return Promise.resolve(token);
+    // jwt: async (token, user) => {
+    //   user && (token.user = user);
+    //   return Promise.resolve(token);
+    // },
+    // session: async (session, user) => {
+    //   if (user) {
+    //     session.user = user.user
+    //     console.log('*******************************')
+    //     console.log('session****', session, user)
+    //     console.log('*******************************')
+    //   }
+    //   return Promise.resolve(session);
+    // },
+    jwt: ({token, user}) => {
+      if(user) {
+        token.id = user.user
+      }
+      return token;
     },
-    session: async (session, user) => {
-      session.user = user.user;
-      return Promise.resolve(session);
-    },
+    session: ({session, token}) => {
+      if(token) {
+        session.user = token.id;
+      }
+
+      return session;
+    }
   },
+  secret: 'test',
+  jwt: {
+    secret: 'test123',
+    encryption: true
+  }
 });

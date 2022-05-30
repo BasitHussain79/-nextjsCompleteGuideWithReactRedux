@@ -1,9 +1,12 @@
+import { useSession } from "next-auth/react";
 import Home from "../components/home/Home";
 import Layout from "../components/layout/Layout";
 import { getRooms } from "../redux/actions/roomsActions";
 import { wrapper } from "../redux/store";
 
 function HomePage() {
+  const {data: session} = useSession();
+  console.log('session', session)
   return (
     <Layout>
       <Home />

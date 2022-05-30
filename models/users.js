@@ -1,6 +1,6 @@
-import bcryptjs from "bcryptjs";
-import mongoose from "mongoose";
-import validator from "validator";
+const bcryptjs = require("bcryptjs");
+const mongoose = require("mongoose");
+const validator = require("validator");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -23,11 +23,11 @@ const userSchema = new mongoose.Schema({
   avatar: {
     public_id: {
       type: String,
-      required: false,
+      required: true,
     },
     url: {
       type: String,
-      required: false,
+      required: true,
     },
   },
   role: {
@@ -56,4 +56,4 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
     return await bcryptjs.compare(enteredPassword, this.password)
 }
 
-export default mongoose.models.User || mongoose.model('User', userSchema)
+module.exports = mongoose.models.User || mongoose.model('User', userSchema)

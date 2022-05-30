@@ -1,7 +1,8 @@
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { clearErrors, registerUser } from "../../controllers/authController";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, registerUser } from '../../redux/actions/userActions';
 import { toastEmitterError } from "../../utils/helpers";
 import ButtonLoader from '../layout/ButtonLoader';
 
@@ -23,8 +24,6 @@ const Register = () => {
   );
 
   const { success, error, loading } = useSelector((state) => state.auth);
- 
-  
 
   useEffect(() => {
     if (success) {
@@ -116,10 +115,12 @@ const Register = () => {
               <div className='d-flex align-items-center'>
                 <div>
                   <figure className='avatar mr-3 item-rtl'>
-                    <img
+                    <Image
                       src={avatarPreview}
                       className='rounded-circle'
                       alt='image'
+                      width={150}
+                      height={150}
                     />
                   </figure>
                 </div>
