@@ -1,26 +1,32 @@
 import {
-  CLEAR_ERRORS, LOAD_USER_REQUEST, REGISTER_USER_FAIL, REGISTER_USER_REQUEST,
+  CLEAR_ERRORS,
+  LOAD_USER_FAIL,
+  LOAD_USER_REQUEST,
+  LOAD_USER_SUCCESS,
+  REGISTER_USER_FAIL,
+  REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS
 } from "../constants/userConstants";
-
 
 const initialState = {
   user: null,
   loading: false,
-  success: false
+  success: false,
+  isAuthenticated: false,
 };
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER_USER_REQUEST:
       return {
-          loading: true
+        loading: true,
       };
 
-      case LOAD_USER_REQUEST: 
+    case LOAD_USER_REQUEST:
       return {
-        loading: true
-      }
+        loading: true,
+        isAuthenticated: false,
+      };
 
     case REGISTER_USER_SUCCESS:
       return {
@@ -28,12 +34,26 @@ export const authReducer = (state = initialState, action) => {
         success: true,
       };
 
+    case LOAD_USER_SUCCESS:
+      return {
+        loading: false,
+        isAuthenticated: true,
+        user: action.payload,
+      };
+
     case REGISTER_USER_FAIL: {
-        return {
-            loading: false,
-            error: action.payload
-        }
+      return {
+        loading: false,
+        error: action.payload,
+      };
     }
+
+    case LOAD_USER_FAIL:
+      return {
+        loading: false,
+        isAuthenticated: false,
+        error: action.payload,
+      };
 
     case CLEAR_ERRORS:
       return {
@@ -45,4 +65,3 @@ export const authReducer = (state = initialState, action) => {
       return state;
   }
 };
-

@@ -65,18 +65,14 @@ export default NextAuth({
     // },
     jwt: ({ token, user }) => {
       if (user) {
-        token.user = user.user;
-        console.log('testing***', user)
+        token.id = user.user;
       }
-      console.log("*******************", user, token);
       return token;
     },
     session: ({ session, token }) => {
       if (token) {
         session.user = token;
       }
-
-      console.log('first', token)
 
       return session;
     },

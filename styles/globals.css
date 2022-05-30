@@ -525,3 +525,7 @@ input::placeholder {
 #description_404 {
   color: grey;
 }
+
+.dropdown-item:hover {
+  background-color: lightblue;
+}
